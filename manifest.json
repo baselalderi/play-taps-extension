@@ -1,0 +1,50 @@
+{
+	"manifest_version": 3,
+	"name": "Play Taps",
+	"description": "Plays 'Taps' when clicked!",
+	"version": "1.0.0",
+	"icons": {
+	 "16": "icon.png",
+	 "48": "icon.png",
+	 "128": "icon.png",
+	 "256": "icon.png"
+	},
+	"action": {
+		"default_icon": {
+			"16": "icon.png"
+		},
+		"default_title": "Click to play Taps"
+	},
+	"permissions": [
+		"activeTab",
+		"scripting",
+		"tabs"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"https://*/*",
+				"http://*/*"
+			],
+			"js": [
+				"taps.js"
+			],
+		"run_at": "document_end"
+		}
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"icon.png",
+				"taps.ogg"
+			],
+			"matches": [
+				"https://*/*",
+				"http://*/*"
+			]
+		}
+	]
+}
